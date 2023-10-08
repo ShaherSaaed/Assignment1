@@ -51,61 +51,60 @@ int main() {
     char action;
     while (cin >> action, action != '0') {
         switch (action) {
-            case '1':
+            case '1': //black and white filter
                 BW();
                 break;
-            case '2':
+            case '2': //invert filter
 
                 break;
-            case '3':
+            case '3': // merger filter
 
                 break;
-            case '4':
+            case '4': //flip
                 FLIP();
                 break;
-            case '5':
+            case '5': //darken and lighten
 
                 break;
-            case '6':
+            case '6': //rotate
 
                 break;
-            case '7':
+            case '7': //detect edges
                 EDGE();
                 break;
-            case '8':
+            case '8': //enlarge
 
                 break;
-            case '9':
+            case '9': //shrink
 
                 break;
-            case 'a':
+            case 'a': //mirror
                 MIRROR();
                 break;
-            case 'b':
+            case 'b': //shuffle
 
                 break;
-            case 'c':
+            case 'c': //blur
 
                 break;
-            case 'd':
+            case 'd': //crop
                 CROP();
                 break;
-            case 'e':
+            case 'e': //skew right
                 
                 break;
-            case 'f':
+            case 'f': //skew up
                 
                 break;
-            case 's':
+            case 's': // save
                 saveImage();
                 break;
         }
-    
     }
     return 0;
 }
 
-//_________________________________________
+//////////////////////////////////////////////////////////////////////////////////////////////
 void loadImage() {
     char imageFileName[100];
 
@@ -118,7 +117,7 @@ void loadImage() {
     readGSBMP(imageFileName, image);
 }
 
-//_________________________________________
+//////////////////////////////////////////////////////////////////////////////////////////////
 void saveImage() {
     char imageFileName[100];
 
