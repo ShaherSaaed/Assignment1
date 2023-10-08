@@ -70,9 +70,20 @@ void BW() {
 }
 
 void FLIP() {
-    for (int i = 0; i < SIZE; i++) {
+    cout << "Flip (h)orizontally or (v)ertically ?\n";
+    char HorV;
+    cin >> HorV;
+    if (HorV == 'h') {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE / 2; j++) {
+                swap(image[i][j], image[i][255 - j]);
+            }
+        }
+    } else {
         for (int j = 0; j < SIZE; j++) {
-
+            for (int i = 0; i < SIZE / 2; i++) {
+                swap(image[i][j], image[255 - i][j]);
+            }
         }
     }
 }
