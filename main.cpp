@@ -6,7 +6,7 @@
 // Date:    30 March 2018
 // Version: 1.0
 
-#include <iostream>
+#include <bits/stdc++.h>
 #include <fstream>
 #include <cstring>
 #include <cmath>
@@ -23,9 +23,16 @@ void BW();
 
 void FLIP();
 
+void MIRROR();
+
+void CROP();
+
 int main() {
     loadImage();
     BW();
+    FLIP();
+    MIRROR();
+    CROP();
     saveImage();
     return 0;
 }
@@ -56,7 +63,8 @@ void saveImage() {
     writeGSBMP(imageFileName, image);
 }
 
-//_________________________________________
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 void BW() {
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
@@ -68,6 +76,8 @@ void BW() {
         }
     }
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 void FLIP() {
     cout << "Flip (h)orizontally or (v)ertically ?\n";
@@ -87,3 +97,57 @@ void FLIP() {
         }
     }
 }
+//////////////////////////////////////////////////////////////////////////////////////////////
+void MIRROR() {
+    cout << "Mirror (l)eft, (r)ight, (u)pper, (d)own side?\n";
+    char mir;
+    cin >> mir;
+    if (mir == 'r')
+        //right side
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE / 2; j++) {
+                image[i][j] = image[i][255 - j];
+            }
+        }
+        //left side
+    else if (mir = 'l')
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE / 2; j++) {
+                image[i][255 - j] = image[i][j];
+            }
+        }
+        //upper
+    else if (mir = 'u')
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE / 2; j++) {
+                image[255 - i][j] = image[i][j];
+            }
+        }
+        //down
+    else if (mir = 'd')
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE / 2; j++) {
+                image[i][j] = image[255 - i][j];
+            }
+        }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+void CROP() {
+    cout << "Please enter x y:\n";
+    int x, y;
+    cin >> x >> y;
+    cout << "Please enter L W:\n";
+    int l, w, startl, endl, startw, endw;
+    cin >> l >> w;
+    startl = x - l / 2;
+    endl = x + l / 2;
+    startw = y - w / 2;
+    endw = y + w / 2;
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++)
+            if ((i < startl || i > endl) || (j < startw || j > endw))
+                image[i][j] = 255;
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
