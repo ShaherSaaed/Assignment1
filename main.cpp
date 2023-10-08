@@ -28,12 +28,80 @@ void MIRROR();
 void CROP();
 
 int main() {
+    cout << "Please enter file name of the image to process\n";
     loadImage();
-    BW();
-    FLIP();
-    MIRROR();
-    CROP();
-    saveImage();
+    cout << "Please select a filter to apply or 0 to exit:\n"
+            "1-Black & White Filter\n"
+            "2-Invert Filter\n"
+            "3-Merge Filter \n"
+            "4-Flip Image\n"
+            "5-Darken and Lighten Image \n"
+            "6-Rotate Image\n"
+            "7-Detect Image Edges \n"
+            "8-Enlarge Image\n"
+            "9-Shrink Image\n"
+            "a-Mirror 1/2 Image\n"
+            "b-Shuffle Image\n"
+            "c-Blur Image\n"
+            "d-Crop Image\n"
+            "e-Skew Image Right  \n"
+            "f-Skew Image Up  \n"
+            "s-Save the image to a file\n"
+            "0-Exit\n";
+    char action;
+    while (cin >> action, action != '0') {
+        switch (action) {
+            case '1':
+                BW();
+                break;
+            case '2':
+
+                break;
+            case '3':
+
+                break;
+            case '4':
+                FLIP();
+                break;
+            case '5':
+
+                break;
+            case '6':
+
+                break;
+            case '7':
+                EDGE();
+                break;
+            case '8':
+
+                break;
+            case '9':
+
+                break;
+            case 'a':
+                MIRROR();
+                break;
+            case 'b':
+
+                break;
+            case 'c':
+
+                break;
+            case 'd':
+                CROP();
+                break;
+            case 'e':
+                
+                break;
+            case 'f':
+                
+                break;
+            case 's':
+                saveImage();
+                break;
+        }
+    
+    }
     return 0;
 }
 
