@@ -192,7 +192,7 @@ void blur(){
 }
 
 void shrink(){
-    cout << "Enter the value to shrink: ";
+    cout << "Shrink to (1/2), (1/4) or (1/3)?";
     string shrink_ratio;
     cin >> shrink_ratio;
     cout << '\n';
