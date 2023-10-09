@@ -9,10 +9,11 @@ Moaz Gehad, ID: 20220340
 Shaher Saeed, ID: 20220163
 
 */
+
+
 #include <iostream>
 #include "bmplib.cpp"
 #include "bmplib.h"
-#include <fstream>
 
 using namespace std;
 unsigned char inputImage[SIZE][SIZE];
@@ -143,11 +144,10 @@ void saveImage () {
 }
 
 void merge() {
-    char secondImage[100];
     cout << "Please enter name of inputImage file to merge with: ";
-    cin >> secondImage;
-    strcat(secondImage, ".bmp");
-    readGSBMP(secondImage, mergeImage);
+    cin >> mergeFile;
+    strcat(mergeFile, ".bmp");
+    readGSBMP(mergeFile, mergeImage);
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             resultImage[i][j] = (inputImage[i][j] + mergeImage[i][j]) / 2;
