@@ -69,7 +69,7 @@ int main()
                 "d-Crop Image\n"
                 "e-Skew Image Right  \n"
                 "f-Skew Image Up  \n"
-                "s-Save the inputImage to a file\n"
+                "s-Save the Image to a file\n"
                 "0-Exit\n";
         cin >> action;
         if(action == '0')
@@ -144,11 +144,10 @@ void saveImage () {
 }
 
 void merge() {
-    char secondImage[100];
-    cout << "Please enter name of inputImage file to merge with: ";
-    cin >> secondImage;
-    strcat(secondImage, ".bmp");
-    readGSBMP(secondImage, mergeImage);
+    cout << "Please enter name of Image file to merge with: ";
+    cin >> mergeFile;
+    strcat(mergeFile, ".bmp");
+    readGSBMP(mergeFile, mergeImage);
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             resultImage[i][j] = (inputImage[i][j] + mergeImage[i][j]) / 2;
