@@ -23,6 +23,8 @@ void BW();
 
 void FLIP();
 
+void EDGE();
+
 void MIRROR();
 
 void CROP();
@@ -51,13 +53,13 @@ int main() {
     char action;
     while (cin >> action, action != '0') {
         switch (action) {
-            case '1': //black and white filter
+            case '1': //black and white
                 BW();
                 break;
-            case '2': //invert filter
+            case '2': //invert
 
                 break;
-            case '3': // merger filter
+            case '3': // merger
 
                 break;
             case '4': //flip
