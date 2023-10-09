@@ -32,7 +32,9 @@ void CROP();
 int main() {
     cout << "Please enter file name of the image to process\n";
     loadImage();
-    cout << "Please select a filter to apply or 0 to exit:\n"
+    char action;
+    while (true) {
+            cout << "Please select a filter to apply or 0 to exit:\n"
             "1-Black & White Filter\n"
             "2-Invert Filter\n"
             "3-Merge Filter \n"
@@ -50,8 +52,9 @@ int main() {
             "f-Skew Image Up  \n"
             "s-Save the image to a file\n"
             "0-Exit\n";
-    char action;
-    while (cin >> action, action != '0') {
+        cin >> action;
+        if(action == '0')
+            break;
         switch (action) {
             case '1': //black and white
                 BW();
