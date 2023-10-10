@@ -48,6 +48,8 @@ void MIRROR();
 
 void CROP();
 
+void EDGE();
+
 int main()
 {
     cout << "Ahlan ya user ya habibi\n";
@@ -261,6 +263,18 @@ void rotateImage() {
     }
 }
 
+void EDGE() {
+    blur();
+    for (int i = 0; i < SIZE; i++) {
+        for(int j = 0; j < SIZE;j++) {
+            if(abs(resultImage[i][j] - resultImage[i][j + 1]) > 15 || abs(resultImage[i][j] - resultImage[i + 1][j]) > 15)
+                resultImage[i][j] = 0;
+            else
+                resultImage[i][j] = 255;
+        }
+    }
+}
+
 void menu(){
     char action;
     cout << "Please select a filter to apply or 0 to exit:\n"
@@ -296,6 +310,7 @@ void menu(){
             rotateImage();
             break;
         case '7': //detect edges
+            EDGE();
             break;
         case '8': //enlarge
 
