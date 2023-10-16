@@ -333,7 +333,7 @@ int writeGSBMP(const char* filename, unsigned char outputImage[][SIZE])
 
 
 
-// int readGS_BMP(char filename[], unsigned char inputImage[][SIZE], BMPHDR *hdr)
+// int readGS_BMP(char filename[], unsigned char image[][SIZE], BMPHDR *hdr)
 // {
 //   int i,j;
 
@@ -378,7 +378,7 @@ int writeGSBMP(const char* filename, unsigned char outputImage[][SIZE])
 //   // Data is read in opposite order (it is stored backwards in the file)
 //   for(i=0; i < SIZE; i++){
 //     for(j=0; j < SIZE; j++){
-//       ifile.read( reinterpret_cast<char *>(&inputImage[SIZE-1-i][j]), sizeof(uint8));
+//       ifile.read( reinterpret_cast<char *>(&image[SIZE-1-i][j]), sizeof(uint8));
 //     }
 //   }
 //   return 0;
