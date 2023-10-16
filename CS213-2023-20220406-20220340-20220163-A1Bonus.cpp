@@ -1,10 +1,15 @@
-// Program: demo2.cpp
-// Purpose: Demonstrate use of bmplip for handling
-//          bmp colored and grayscale images
-//          Program load a gray image and store in another file
-// Author:  Mohammad El-Ramly
-// Date:    30 March 2018
-// Version: 1.0
+/* This assignment is done by Students:
+
+Yussuf Mohammad Taha, ID:20220406
+
+Moaz Gehad, ID: 20220340
+
+Shaher Saeed, ID: 20220163
+
+Last modification: 16 / 10 / 2023
+
+Submitted to Dr. Mohamed El-Ramly.
+*/
 
 #include <iostream>
 #include <fstream>
