@@ -48,6 +48,10 @@ void colored_darken_and_lighten();
 
 void colored_merge();
 
+void colored_skewVertical();
+
+void colored_skewHorizontal();
+
 
 int main() {
     cout << "Ahlan ya user ya habibi\n";
