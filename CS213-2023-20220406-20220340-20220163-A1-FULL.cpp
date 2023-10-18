@@ -8,7 +8,7 @@ Moaz Gehad, ID: 20220340
 
 Shaher Saeed, ID: 20220163
 
-Last modification: 16 / 10 / 2023
+Last modification: 18 / 10 / 2023
 
 */
 
@@ -42,13 +42,13 @@ void merge();
 
 void darken_and_lighten();
 
-void BW();
+void black_and_white();
 
-void FLIP();
+void flipImage();
 
-void MIRROR();
+void mirrorImage();
 
-void CROP();
+void cropImage();
 
 void skewVertical();
 
@@ -155,7 +155,7 @@ void shrink(){
     }
 }
 
-void BW() {
+void black_and_white() {
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             int avg = (inputImage[i][j] + 127) / 2;
@@ -167,7 +167,7 @@ void BW() {
     }
 }
 
-void FLIP() {
+void flipImage() {
     cout << "Flip (h)orizontally or (v)ertically ?\n";
     char HorV;
     cin >> HorV;
@@ -186,7 +186,7 @@ void FLIP() {
     }
 }
 
-void MIRROR() {
+void mirrorImage() {
     cout << "Mirror (l)eft, (r)ight, (u)pper, (d)own side?\n";
     char mir;
     cin >> mir;
@@ -224,7 +224,7 @@ void MIRROR() {
     }
 }
 
-void CROP() {
+void cropImage() {
     cout << "Please enter x y:\n";
     int x, y;
     cin >> x >> y;
@@ -397,7 +397,7 @@ void menu(){
         return;
     switch (action) {
         case '1': //black and white
-            BW();
+            black_and_white();
             break;
         case '2': //invert
             invertImage();
@@ -406,7 +406,7 @@ void menu(){
             merge();
             break;
         case '4': //flip
-            FLIP();
+            flipImage();
             break;
         case '5': //darken and lighten
             darken_and_lighten();
@@ -424,7 +424,7 @@ void menu(){
             shrink();
             break;
         case 'a': //mirror
-            MIRROR();
+            mirrorImage();
             break;
         case 'b': //shuffle
 
@@ -433,7 +433,7 @@ void menu(){
             blur();
             break;
         case 'd': //crop
-            CROP();
+            cropImage();
             break;
         case 'e': //skew right
             skewHorizontal();
