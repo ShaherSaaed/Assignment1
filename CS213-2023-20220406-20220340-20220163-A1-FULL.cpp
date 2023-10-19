@@ -8,7 +8,7 @@ Moaz Gehad, ID: 20220340
 
 Shaher Saeed, ID: 20220163
 
-Last modification: 18 / 10 / 2023
+Last modification: 19 / 10 / 2023
 
 */
 
@@ -42,13 +42,13 @@ void merge();
 
 void darken_and_lighten();
 
-void black_and_white();
+void BW();
 
-void flipImage();
+void FLIP();
 
-void mirrorImage();
+void MIRROR();
 
-void cropImage();
+void CROP();
 
 void skewVertical();
 
@@ -58,10 +58,12 @@ void enlargeImage();
 
 void detectEdges();
 
+void shuffleImage();
+
 int main()
 {
     cout << "Ahlan ya user ya habibi\n";
-    cout << "Please enter file name of the image to process: ";
+    cout << "Please enter file name of the Image to process:";
     loadImage();
     menu();
     return 0;
@@ -77,14 +79,14 @@ void loadImage () {
 
 void saveImage () {
     char savedImage[100];
-    cout << "Enter the target Image file name: ";
+    cout << "Enter the target Image file name:";
     cin >> savedImage;
     strcat (savedImage, ".bmp");
     writeGSBMP(savedImage, resultImage);
 }
 
 void merge() {
-    cout << "Please enter name of Image file to merge with: ";
+    cout << "Please enter name of Image file to merge with:";
     cin >> mergeFile;
     strcat(mergeFile, ".bmp");
     readGSBMP(mergeFile, mergeImage);
@@ -97,10 +99,10 @@ void merge() {
 }
 
 void darken_and_lighten(){
-    cout << "Do you want to (d)arken or (l)ighten the Image: ";
+    cout << "Do you want to (d)arken or (l)ighten the Image:";
     string brightness; cin >> brightness;
     if(brightness[0] == 'd') {
-        // For darkening the image, we subtract the current value of the pixel by half its value.
+        // For darkening the Image, we subtract the current value of the pixel by half its value.
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (inputImage[i][j] != 0) {
@@ -110,7 +112,7 @@ void darken_and_lighten(){
         }
     }
     else{
-        // For lightening the image, we add half the value of the current pixel to itself unless the value is greater than 170 we just make it 255.
+        // For lightening the Image, we add half the value of the current pixel to itself unless the value is greater than 170 we just make it 255.
         for(int i = 0; i < SIZE; i++){
             for(int j = 0; j < SIZE; j++){
                 if(inputImage[i][j] < 170){
@@ -135,19 +137,19 @@ void blur(){
 }
 
 void shrink(){
-    cout << "Do you want to shrink to (1/2), (1/3), (1/4): ";
+    cout << "Do you want to shrink to (1/2), (1/3), (1/4):";
     string shrink_ratio;
     cin >> shrink_ratio;
     cout << '\n';
     // Using the ".back()" method, we take the denominator of the ratio and subtract it by char(0) to get the integer value.
     int shrink = (shrink_ratio.back() - '0');
-    // Whitening the image.
+    // Whitening the Image.
     for(int i = 0; i < 256; i++){
         for(int j = 0; j < 256; j++){
             resultImage[i][j] = 255;
         }
     }
-    // Shrinking the image by accessing the current pixel and putting it in the current index divided by the shrink ratio.
+    // Shrinking the Image by accessing the current pixel and putting it in the current index divided by the shrink ratio.
     for(int i = 0; i < 256; i++){
         for(int j = 0; j < 256; j++){
             resultImage[int(i / shrink)][int(j / shrink)] = inputImage[i][j];
@@ -155,7 +157,7 @@ void shrink(){
     }
 }
 
-void black_and_white() {
+void BW() {
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             int avg = (inputImage[i][j] + 127) / 2;
@@ -167,7 +169,7 @@ void black_and_white() {
     }
 }
 
-void flipImage() {
+void FLIP() {
     cout << "Flip (h)orizontally or (v)ertically ?\n";
     char HorV;
     cin >> HorV;
@@ -186,7 +188,7 @@ void flipImage() {
     }
 }
 
-void mirrorImage() {
+void MIRROR() {
     cout << "Mirror (l)eft, (r)ight, (u)pper, (d)own side?\n";
     char mir;
     cin >> mir;
@@ -224,7 +226,7 @@ void mirrorImage() {
     }
 }
 
-void cropImage() {
+void CROP() {
     cout << "Please enter x y:\n";
     int x, y;
     cin >> x >> y;
@@ -252,7 +254,7 @@ void invertImage() {
 
 void rotateImage() {
     int degree;
-    cout << "Rotate (90) / (180) or (270) degree clockwise ? ";
+    cout << "Rotate (90) / (180) or (270) degree clockwise?";
     cin >> degree ;
     if (degree==270){
         for (int i = 0; i < SIZE; i++) {
@@ -279,19 +281,19 @@ void rotateImage() {
 }
 
 void skewVertical(){
-    cout << "Enter the degree to skew up: ";
+    cout << "Enter the degree to skew up:";
     double angle; cin >> angle;
     double radian;
     radian = (22 * angle) / (7 * 180);
-    // The length is used for compressing the image and also skewing.
+    // The length is used for compressing the Image and also skewing.
     int length = 256 - (256*(tan(radian)));
-    // Whitening the image.
+    // Whitening the Image.
     for(int i = 0 ; i < SIZE; i++){
         for(int j = 0; j < SIZE; j++){
             resultImage[i][j] = 255;
         }
     }
-    // Compressing the image.
+    // Compressing the Image.
     for(int i = 0; i < SIZE; i++){
         for(int j = 0; j <= length; j++){
             inputImage[i][j] = inputImage[i][(256 * j) / length];
@@ -306,19 +308,19 @@ void skewVertical(){
 }
 
 void skewHorizontal(){
-    cout << "Enter the degree to skew right: ";
+    cout << "Enter the degree to skew right:";
     double angle; cin >> angle;
     double radian;
     radian = (22 * angle) / (7 * 180);
-    // The length is used for compressing the image and also skewing.
+    // The length is used for compressing the Image and also skewing.
     int length = 256 - (256*(tan(radian)));
-    // Whitening the image.
+    // Whitening the Image.
     for(int i = 0 ; i < SIZE; i++){
         for(int j = 0; j < SIZE; j++){
             resultImage[i][j] = 255;
         }
     }
-    // Compressing the image.
+    // Compressing the Image.
     for(int i = 0; i <= length; i++){
         for(int j = 0; j < SIZE; j++){
             inputImage[i][j] = inputImage[(256 * i) / length][j];
@@ -334,12 +336,12 @@ void skewHorizontal(){
 
 void enlargeImage(){
     int quarter;
-    cout << "Which quarter to enlarge : 1, 2, 3 or 4 ? ";
+    cout << "Which quarter to enlarge : 1, 2, 3 or 4?";
     cin >> quarter ;
     if (quarter == 1){
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j< SIZE; j++) {
-                resultImage[i][j] = inputImage[i/2][j/2];
+                resultImage[i][j] = inputImage[i / 2][j / 2];
             }
         }
     }
@@ -347,7 +349,7 @@ void enlargeImage(){
     {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j< SIZE; j++) {
-                resultImage[i][j] = inputImage[i/2][(j/2)+128];
+                resultImage[i][j] = inputImage[i / 2][(j / 2) + 128];
             }
         }
     }
@@ -355,7 +357,7 @@ void enlargeImage(){
     {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j< SIZE; j++) {
-                resultImage[i][j] = inputImage[(i/2)+128][(j/2)];
+                resultImage[i][j] = inputImage[(i / 2) + 128][(j / 2)];
             }
         }
     }
@@ -363,11 +365,12 @@ void enlargeImage(){
     {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j< SIZE; j++) {
-                resultImage[i][j] = inputImage[(i/2)+128][(j/2)+128];
+                resultImage[i][j] = inputImage[(i / 2) + 128][(j / 2) + 128];
             }
         }
     }
 }
+
 void detectEdges() {
     blur();
     for (int i = 0; i < SIZE; i++) {
@@ -380,24 +383,72 @@ void detectEdges() {
     }
 }
 
+void moveQuarter(int idx, int i, int j )
+{
+    int temp = j;
+    if (idx==1)
+        for (int k=0; k < SIZE/2; i++,k++)
+        {
+            j = temp;
+            for (int z=0; z< SIZE/2; j++,z++)
+                resultImage[i][j] = inputImage[k][z];
+        }
+    else if (idx==2)
+        for (int k = 0; k< SIZE/2; i++,k++)
+        {
+            j = temp;
+            for (int z = SIZE/2; z< SIZE; j++,z++)
+                resultImage[i][j] = inputImage[k][z];
+        }
+    else if (idx ==3)
+        for (int k=  SIZE/2 ; k<SIZE; i++,k++)
+        {
+            j = temp;
+            for (int z=0; z< SIZE/2; j++,z++)
+                resultImage[i][j] = inputImage[k][z];
+        }
+    else if (idx ==4)
+        for (int k =  SIZE/2; k < SIZE; i++,k++)
+        {
+            j = temp;
+            for (int z = SIZE/2; z< SIZE; j++,z++)
+                resultImage[i][j] = inputImage[k][z];
+        }
+}
+
+void shuffleImage()
+{
+    int n ;
+    cout << "New order of quarters you want: ";
+    for (int i =0 ; i <4 ; i++)
+    {
+        cin>>n;
+        if (i==0) moveQuarter(n,0,0);
+        else if (i==1) moveQuarter(n,0,SIZE/2);
+        else if (i==2) moveQuarter(n,SIZE/2,0);
+        else if (i==3) moveQuarter(n,SIZE/2,SIZE/2);
+    }
+}
+
 void menu(){
     char action;
     cout << "Please select a filter to apply or 0 to exit:\n"
+            "You can apply several filters before saving, after saving the image will be reset.\n\n"
             "1-Black & White Filter          9-Shrink Image\n"
             "2-Invert Filter                 a-Mirror 1/2 Image\n"
             "3-Merge Filter                  b-Shuffle Image\n"
             "4-Flip Image                    c-Blur Image\n"
             "5-Darken and Lighten Image      d-Crop Image\n"
-            "6-Rotate Image                  e-Skew Image Right  \n"
+            "6-Rotate Image                  e-Skew Image Right\n"
             "7-Detect Image Edges            f-Skew Image Up\n"
-            "8-Enlarge Image                 s-Save the image to a file\n"
+            "8-Enlarge Image                 s-Save the inputImage to a file\n"
             "9-Shrink Image                  0-Exit\n";
     cin >> action;
     if(action == '0')
         return;
     switch (action) {
         case '1': //black and white
-            black_and_white();
+            BW();
             break;
         case '2': //invert
             invertImage();
@@ -406,7 +457,7 @@ void menu(){
             merge();
             break;
         case '4': //flip
-            flipImage();
+            FLIP();
             break;
         case '5': //darken and lighten
             darken_and_lighten();
@@ -424,16 +475,16 @@ void menu(){
             shrink();
             break;
         case 'a': //mirror
-            mirrorImage();
+            MIRROR();
             break;
         case 'b': //shuffle
-
+            shuffleImage();
             break;
         case 'c': //blur
             blur();
             break;
         case 'd': //crop
-            cropImage();
+            CROP();
             break;
         case 'e': //skew right
             skewHorizontal();
@@ -443,6 +494,8 @@ void menu(){
             break;
         case 's': // save
             saveImage();
+            readGSBMP(imageName, inputImage);
+            readGSBMP(imageName, resultImage);
             break;
     }
     menu();
