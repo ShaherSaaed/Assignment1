@@ -486,7 +486,7 @@ void RGB_rotateImage() {
 void RGB_menu() {
     char action;
     cout << "Please select a filter to apply or 0 to exit:\n"
-            "You can apply several filters before saving, after saving the image will be reset.\n"
+            "You can apply several filters before saving, after saving the image will be reset.\n\n"
             "1-Black & White Filter          9-Shrink Image\n"
             "2-Invert Filter                 a-Mirror 1/2 Image\n"
             "3-Merge Filter                  b-Shuffle Image\n"
